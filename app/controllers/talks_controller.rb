@@ -1,4 +1,6 @@
 class TalksController < ApplicationController
+  before_action :set_talk, only: [:show, :update, :destroy]
+
   def index
     @talks = Talk.all
     render json: @talks
@@ -18,14 +20,23 @@ class TalksController < ApplicationController
     end
   end
 
+  def update
+    @talk.update(talk_params)
+    head :no_content
+  end
+
+  def destroy
+    @talk.destroy
+    head :no_content
+  end
+
   private
 
   def talk_params
-    params.permit(
-      :title,
-      :category,
-      :description
-    )
+    params.permit(:title, :category, :description)
   end
 
+  def set_talk
+    @talk = Talk.find(params[:id])
+  end
 end

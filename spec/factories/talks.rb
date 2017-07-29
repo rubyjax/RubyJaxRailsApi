@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :talk do
-    title       { Faker::Book.title      }
-    category    { Faker::Superhero.power }
-    description { Faker::Lorem.paragraph }
+    title       { FFaker::Book.title      }
+    category    { FFaker::Lorem.sentence }
+    description { FFaker::Lorem.paragraph }
   end
 end

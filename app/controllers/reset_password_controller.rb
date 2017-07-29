@@ -1,5 +1,5 @@
 class ResetPasswordController < ApplicationController
   def create
-    render json: {message: "email sent"}, status: 202
+    render json: {message: "email sent"}, status: :accepted
   end
 end

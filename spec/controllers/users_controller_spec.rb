@@ -37,7 +37,7 @@ RSpec.describe UsersController, type: :controller do
             'id' => user.id.to_s,
             'type' => 'users',
             'links' => {
-              'self' => 'http://test.host/users/3'
+              'self' => "http://test.host/users/#{user.id}"
             },
             'attributes' => {
               'email' => 'user@example.com',

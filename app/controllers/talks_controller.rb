@@ -14,9 +14,9 @@ class TalksController < ApplicationController
   def create
     talk = Talk.create(talk_params) 
     if talk.save
-      render json: talk, status: :created 
+      render json: talk, status: :created
     else
-      render json: { "error": "failed to create" }
+      render json: { "error": "failed to create" }, status: :unprocessable_entity
     end
   end
 
@@ -33,7 +33,7 @@ class TalksController < ApplicationController
   private
 
   def talk_params
-    params.permit(:title, :category, :description)
+    params.permit(:title, :category, :description, :length_of_talk)
   end
 
   def set_talk

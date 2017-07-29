@@ -19,7 +19,7 @@ describe Talk do
     before { get "/talks/#{talk_id}" }
 
     it "returns a specific talk" do
-      expect(json.size).to eq(6)
+      expect(json.size).to eq(7)
       expect(talk.title == json["title"])
     end
   end
@@ -28,7 +28,8 @@ describe Talk do
     let(:new_talk) do {
       title: "Rails API and React",
       category: "web development",
-      description: "we are working on cool project for the RubyJax website"
+      description: "we are working on cool project for the RubyJax website",
+      length_of_talk: 15
     } end
 
     it "creates a new talk submission" do
@@ -36,6 +37,20 @@ describe Talk do
 
       expect(response.status).to eql(201)
       expect(json["title"]).to eq("Rails API and React")
+    end
+  end
+
+  describe 'POST /talk' do 
+    let(:new_talk) do {
+      title: "Rails API and React",
+      category: "web development",
+      description: "we are working on cool project for the RubyJax website",
+      length_of_talk: "cat"
+    } end
+
+    it "should fail because length not integer" do
+      post "/talks", params: new_talk
+      expect(response.status).to eql(422) 
     end
   end
 

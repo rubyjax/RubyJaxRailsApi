@@ -6,6 +6,7 @@ gem 'puma', '~> 3.7'
 gem 'pry-rails'
 gem 'rails', '~> 5.1.2'
 gem 'rack-cors'
+gem 'jsonapi-resources'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.5'

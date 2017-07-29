@@ -2,7 +2,8 @@ class TalksController < ApplicationController
   before_action :set_talk, only: [:show, :update, :destroy]
 
   def index
-    @talks = Talk.all
+    page = params[:page] || 1
+    @talks = Talk.all.paginate(page: page)
     render json: @talks
   end
 
@@ -12,13 +13,12 @@ class TalksController < ApplicationController
   end
 
   def create
-    @talk = Talk.create(talk_params)
-
-    if @talk.save
-      render json: @talk, status: :created
+    talk = Talk.create(talk_params)
+    if talk.save
+      render json: talk, status: :created
     else
       render json: {
-        "error": "failed to create: #{@talk.errors.full_messages.join(', ')}",
+        "error": "failed to create: #{talk.errors.full_messages.join(', ')}",
       }, status: :unprocessable_entity
     end
   end

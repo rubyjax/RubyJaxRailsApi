@@ -1,12 +1,21 @@
 require 'rails_helper'
 
-
 describe TalksController do
 
   it "should post with valid parameters" do
     talk = Talk.new(title: "title", category: "category", description: "description", length_of_talk: 10)
     post :create, {params: talk.attributes}
     expect(Talk.last.title).to eq(talk.title)
+  end
+
+  it "should paginate" do
+    9.times do
+      Talk.create(title: "title", category: "category", description: "description")
+    end
+    get :index
+    expect(assigns(:talks).size).to eq(5)
+    get :index, {params: {page: 2}}
+    expect(assigns(:talks).size).to eq(4)
   end
 
   it "should not post with invalid parameters" do

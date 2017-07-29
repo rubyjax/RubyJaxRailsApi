@@ -11,4 +11,6 @@ class Talk < ApplicationRecord
   def description_present?
     description.present?
   end
+
+  self.per_page = 5
 end

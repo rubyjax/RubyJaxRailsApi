@@ -1,24 +1,44 @@
-# README
+# RubyJax Website
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This project is an API for the local RubyJax website. In its current form it
+list the current upcoming talks.
 
-Things you may want to cover:
+# Prequisites
 
-* Ruby version
+* Ruby version: 2.3.1
+* Rails version: 5.1.2
+* Database:  Postgres
+* Test suite:  RSpec
 
-* System dependencies
+## Getting Started
+Clone the application:
 
-* Configuration
+```
+clone git@github.com:rubyjax/RubyJaxRailsApi.git
+cd RubyJaxRailsApi
+```
 
-* Database creation
+Prepare your database:
+```
+rake db:create
+rake db:migrate
+```
 
-* Database initialization
+## Run the tests
+You can run the test suite, which is RSpec based, by executing the following command:
 
-* How to run the test suite
+```
+rspec
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+## Seed the database
 
-* Deployment instructions
+```
+rake db:seed
+```
 
-* ...
+## Start Web Server - Development environment
+
+```
+rails server
+```

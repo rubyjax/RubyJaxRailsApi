@@ -34,7 +34,7 @@ class TalksController < ApplicationController
   private
 
   def talk_params
-    params.permit(:title, :category, :description)
+    params.permit(:title, :category, :description, :length_of_talk)
   end
 
   def set_talk

@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20170729161409) do
     t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "length_of_talk"
   end
 
   create_table "users", force: :cascade do |t|

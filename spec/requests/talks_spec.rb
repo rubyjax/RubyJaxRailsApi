@@ -50,6 +50,8 @@ describe Talk do
 
     it "should fail because length not integer" do
       post "/talks", params: new_talk
+
+      expect(response.body).to eq({"error":"failed to create: Length of talk is not a number"}.to_json)
       expect(response.status).to eql(422) 
     end
   end

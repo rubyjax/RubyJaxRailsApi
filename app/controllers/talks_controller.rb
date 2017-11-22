@@ -17,7 +17,9 @@ class TalksController < ApplicationController
     if @talk.save
       render json: @talk, status: :created
     else
-      render json: { "error": "failed to create: #{@talk.errors.full_messages.join(', ')}" }
+      render json: {
+        "error": "failed to create: #{@talk.errors.full_messages.join(', ')}",
+      }, status: :unprocessable_entity
     end
   end
 

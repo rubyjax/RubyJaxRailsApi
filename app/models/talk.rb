@@ -3,6 +3,7 @@ class Talk < ApplicationRecord
   validates_with TitleLengthValidator, if: :title_present?
   validates_with DescriptionLengthValidator, if: :description_present?
   validates_numericality_of :length_of_talk, {only_integer: true}
+  self.per_page = 5
 
   def title_present?
     title.present?
@@ -11,6 +12,4 @@ class Talk < ApplicationRecord
   def description_present?
     description.present?
   end
-
-  self.per_page = 5
 end

@@ -10,7 +10,7 @@ describe TalksController do
 
   it "should paginate" do
     9.times do
-      Talk.create(title: "title", category: "category", description: "description")
+      Talk.create(title: "title", category: "category", description: "description", length_of_talk: 10)
     end
     get :index
     expect(assigns(:talks).size).to eq(5)

@@ -2,7 +2,8 @@ class TalksController < ApplicationController
   before_action :set_talk, only: [:show, :update, :destroy]
 
   def index
-    @talks = Talk.all
+    page = params[:page] || 1
+    @talks = Talk.all.paginate(page: page)
     render json: @talks
   end
 
@@ -13,7 +14,6 @@ class TalksController < ApplicationController
 
   def create
     @talk = Talk.create(talk_params)
-
     if @talk.save
       render json: @talk, status: :created
     else

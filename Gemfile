@@ -8,6 +8,7 @@ gem 'pry-rails'
 gem 'rails', '~> 5.1.2'
 gem 'rack-cors'
 gem 'jsonapi-resources'
+gem 'will_paginate'
 
 group :development, :test do
   gem 'ffaker', '~>2.6.0'
